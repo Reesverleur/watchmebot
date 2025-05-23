@@ -9,7 +9,7 @@ load_dotenv()
 from discord.ext import commands
 
 WATCHLIST_FILE = "watchlists.json"
-NOTIFY_INTERVAL = 1  # seconds (1/2 hour)
+NOTIFY_INTERVAL = 1800  # seconds (1/2 hour)
 
 intents = discord.Intents.default()
 intents.members = True

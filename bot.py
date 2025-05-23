@@ -3,6 +3,9 @@ import asyncio
 import random
 import time
 import json
+import os
+from dotenv import load_dotenv
+load_dotenv()
 from discord.ext import commands
 
 WATCHLIST_FILE = "watchlists.json"
@@ -168,4 +171,4 @@ async def ping(ctx):
     await ctx.send("Pong!")
 
 # Replace with your bot token
-bot.run("YOUR_BOT_TOKEN_HERE")
+bot.run(os.environ["DISCORD_BOT_TOKEN"])

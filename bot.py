@@ -25,12 +25,32 @@ watchlists = {}
 last_notified = {}
 
 whimsical_templates = [
-    "The wind shifts... {user} has appeared in {channel}!",
-    "Brace yourself, {user} just joined {channel}.",
-    "Alert! {user} materialized in {channel}.",
-    "Rumor has it that {user} was spotted in {channel}.",
-    "Hold the phone! {user} is now lurking in {channel}.",
-    "The prophecy foretold: {user} enters {channel}."
+    "🌬️ The wind shifts... **{user}** has appeared in **{channel}**!",
+    "⚔️ Brace yourself — **{user}** just joined **{channel}**.",
+    "🚨 Alert! **{user}** has materialized in **{channel}**.",
+    "🕵️ Rumor has it that **{user}** was spotted in **{channel}**.",
+    "📞 Hold the phone! **{user}** is now lurking in **{channel}**.",
+    "📜 The prophecy foretold: **{user}** enters **{channel}**.",
+    "⚡ A ripple in the fabric of space... {user} emerges in {channel}!",
+    "🎩 With a flourish and a poof, {user} appears in {channel}.",
+    "🔮 The oracle speaks: {user} has joined {channel}.",
+    "🐾 Mysterious footsteps echo... it’s {user} in {channel}.",
+    "🚪 You hear a door creak open. {user} just slipped into {channel}.",
+    "📡 Incoming transmission: {user} has landed in {channel}.",
+    "🌪️ A gust of wind, a swirl of leaves — and {user} is now in {channel}.",
+    "🎭 The curtain rises, and {user} takes the stage in {channel}.",
+    "👀 You blink — and suddenly, {user} is in {channel}.",
+    "🌀 Reality distorts slightly. {user} is now in {channel}.",
+    "🧙 A wizard whispers... ‘{user} has entered {channel}.’",
+    "🌠 A star twinkles twice. That means {user} is here — in {channel}.",
+    "📖 The next chapter begins: {user} appears in {channel}.",
+    "🗝️ A hidden door opens... {user} steps into {channel}.",
+    "🐉 A dragon stirs. No — just {user}, arriving in {channel}.",
+    "🌙 The moon glows brighter as {user} enters {channel}.",
+    "🍄 A peculiar silence falls. {user} has joined {channel}.",
+    "💾 Upload complete. {user} has spawned in {channel}.",
+    "🌈 Somewhere over the bandwidth, {user} is now in {channel}.",
+    "🚀 Lift-off confirmed — {user} has docked in {channel}."
 ]
 
 def load_watchlists():

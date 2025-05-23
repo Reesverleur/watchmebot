@@ -78,20 +78,43 @@ async def on_voice_state_update(member, before, after):
     if before.channel is None and after.channel is not None:
         now = time.time()
         for watcher_id, targets in watchlists.items():
-            if member.id in targets:
-                key = (watcher_id, member.id)
-                if key in last_notified and now - last_notified[key] < NOTIFY_INTERVAL:
-                    continue
-                last_notified[key] = now
+            if member.id not in targets:
+                continue
 
-                watcher = bot.get_user(watcher_id)
-                if watcher:
-                    template = random.choice(whimsical_templates)
-                    message = template.format(user=member.name, channel=after.channel.name)
-                    try:
-                        await watcher.send(message)
-                    except discord.Forbidden:
-                        print(f"Could not DM user {watcher_id}")
+            # Get the watcher (user who should be notified)
+            watcher = bot.get_user(watcher_id)
+            if watcher is None:
+                continue
+
+            # Get all guilds the bot shares with the watcher
+            shared_guilds = [g for g in bot.guilds if g.get_member(watcher_id)]
+            watcher_member = None
+
+            for guild in shared_guilds:
+                m = guild.get_member(watcher_id)
+                if m and m.voice:
+                    watcher_member = m
+                    break
+
+            # If watcher is in same voice channel, suppress the message
+            if watcher_member and watcher_member.voice and watcher_member.voice.channel == after.channel:
+                continue
+
+            # Rate limiting
+            now = time.time()
+            key = (watcher_id, member.id)
+            if key in last_notified and now - last_notified[key] < NOTIFY_INTERVAL:
+                continue
+            last_notified[key] = now
+
+            # Send message
+            template = random.choice(whimsical_templates)
+            message = template.format(user=member.name, channel=after.channel.name)
+            try:
+                await watcher.send(message)
+            except discord.Forbidden:
+                print(f"Could not DM user {watcher_id}")
+
 
 # === User Watchlist Commands ===
 @bot.command()

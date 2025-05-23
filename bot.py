@@ -1,6 +1,5 @@
 import discord
-import asyncio
-import random
+import secrets
 import time
 import json
 import os
@@ -108,7 +107,7 @@ async def on_voice_state_update(member, before, after):
             last_notified[key] = now
 
             # Send message
-            template = random.choice(whimsical_templates)
+            template = secrets.choice(whimsical_templates)
             message = template.format(user=member.name, channel=after.channel.name)
             try:
                 await watcher.send(message)
